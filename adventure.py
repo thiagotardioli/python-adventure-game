@@ -26,6 +26,41 @@ def print_pause(text):
 
 # As a game developer I want to have a fight with
 # enemies so that the game can be challenging
+def fight():
+    # Things that happen when the player fights
+    if weapon_level == 0:
+        print_pause("You do your best...")
+        print_pause(f"but your dagger is no match for the {active_enemy}.")
+        print_pause("You have been defeated!")
+        gameover()
+    else:
+        print_pause(f"As the {active_enemy} moves to attack,\
+you unsheath your new sword.")
+        print_pause("The Sword of Ogoroth shines brightly in your\
+hand as you brace yourself for the attack.")
+        print_pause(f"But the {active_enemy} takes one look at your\
+shiny new toy and runs away!")
+        print_pause(f"You have rid the town of the {active_enemy}.\
+You are victorious!")
+        gameover()
+
+def house():
+    # Things that happen to the player in the house
+    print_pause("You approach the door of the house.")
+    print_pause(f"You are about to knock when the door\
+opens and out steps a {active_enemy}.")
+    print_pause(f"Eep! This is the {active_enemy}'s house!")
+    print_pause(f"The {active_enemy} attacks you!")
+    if weapon_level == 0:
+        print_pause("You feel a bit under-prepared for this,\
+what with only having a tiny dagger.")
+    option = input("Would you like to (1) fight or (2) run away?\n")
+    while option_validation(option) is False:
+        option = input()
+    if(option == "1"):
+        fight()
+    else:
+        field()
 
 # As a game developer I want to have an option to
 # escape the enemy so that a user won't die (game over)
