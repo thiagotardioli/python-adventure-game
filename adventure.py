@@ -15,6 +15,44 @@ def init():
     global weapon_level
     weapon_level = 0
 
+def cave():
+    # Things that happen to the player goes in the cave
+    global weapon_level
+    if weapon_level == 0:
+        weapon_level = 1
+        print_pause("You peer cautiously into the cave.")
+        print_pause("It turns out to be only a very small cave.")
+        print_pause("Your eye catches a glint of metal behind a rock.")
+        print_pause("You have found the magical Sword of Ogoroth!")
+        print_pause("You discard your silly old dagger and take\
+the sword with you.")
+        print_pause("You walk back out to the field.")
+        print_pause("Enter 1 to knock on the door of the house.")
+        print_pause("Enter 2 to peer into the cave.")
+        option = input("What would you like to do?\n")
+        while option_validation(option) is False:
+            option = input()
+        if(option == "1"):
+            house()
+        else:
+            cave()
+    else:
+        print_pause("You peer cautiously into the cave.")
+        print_pause("You've been here before, and gotten\
+all the good stuff. It's just an empty cave now.")
+        print_pause("You walk back out to the field.\n")
+        print_pause("Enter 1 to knock on the door of the house.")
+        print_pause("Enter 2 to peer into the cave.")
+        option = input("What would you like to do?\
+\n(Please enter 1 or 2.)\n")
+        while option_validation(option) is False:
+            option = input()
+        if(option == "1"):
+            house()
+        else:
+            cave()
+
+
 # As a user I want to have some dramatic pauses
 # during the game so that can be more exciting
 def print_pause(text):
@@ -64,6 +102,19 @@ what with only having a tiny dagger.")
 
 # As a game developer I want to have an option to
 # escape the enemy so that a user won't die (game over)
+def field():
+    # Things that happen when the player runs back to the field
+    print_pause("You run back into the field. Luckily,\
+you don't seem to have been followed.\n")
+    print_pause("Enter 1 to knock on the door of the house.")
+    print_pause("Enter 2 to peer into the cave.")
+    option = input("What would you like to do?\n(Please enter 1 or 2.)\n")
+    while option_validation(option) is False:
+        option = input()
+    if(option == "1"):
+        house()
+    else:
+        cave()
 
 def main():
     # Things that happen when the game starts
