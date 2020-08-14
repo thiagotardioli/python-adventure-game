@@ -1,5 +1,10 @@
+import random
+
 # As a game developer I want to have random
 # enemies so that a user won't be bored.
+def enemy():
+    enemy = random.choice(["dragon", "gorgon", "wicked fairie", "troll"])
+    return enemy
 
 # As a game developer I want to have a mistery
 # weapon so that a user can get excited with
