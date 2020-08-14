@@ -1,6 +1,7 @@
 import random
+import time
 
-global weapon_level
+global active_enemy, weapon_level
 
 # As a game developer I want to have random
 # enemies so that a user won't be bored.
@@ -12,7 +13,8 @@ def enemy():
 # weapon so that a user can get excited with
 # different levels of dificulty.
 def init():
-    global weapon_level
+    global active_enemy, weapon_level
+    active_enemy = enemy()
     weapon_level = 0
 
 def cave():
@@ -61,6 +63,19 @@ def print_pause(text):
 
 # As a game developer I want to have a option checker
 # so that we can prevent a user to select invalid options
+def option_validation(s):
+    if s == "1" or s == "2":
+        return True
+    else:
+        print("(Please enter 1 or 2).")
+        return False
+
+
+def restart_validation(s):
+    if s == "y" or s == "n":
+        return True
+    else:
+        return False
 
 # As a game developer I want to have a fight with
 # enemies so that the game can be challenging
@@ -136,3 +151,16 @@ effective) dagger.")
         house()
     else:
         cave()
+
+def gameover():
+    # Things that happen when game is over
+    option = input("Would you like to play again? (y/n)\n")
+    while restart_validation(option) is False:
+        option = input("(Please enter y or n.)\n")
+    if(option == "y"):
+        main()
+    else:
+        print("Thanks for playing! See you next time!")
+
+
+main()
